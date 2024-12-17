@@ -10,7 +10,7 @@ class RequestController extends Controller
 {
     public function index()
     {
-        $requests = WashRequest::all();
+        $requests = WashRequest::where('user_id', Auth::user()->id)->get();
 
         return view('request.index', compact('requests'));
     }
@@ -43,6 +43,17 @@ class RequestController extends Controller
     public function destroy(WashRequest $washRequest)
     {
         $washRequest->delete();
+        return redirect()->back();
+    }
+    public function update(Request $request)
+    {
+        $data = $request->validate([
+            'status_id' => ['required'],
+            'id' => ['required'],
+        ]);
+        WashRequest::where('id', $request->id)->update([
+            'status_id' => $request->status_id,
+        ]);
         return redirect()->back();
     }
 }

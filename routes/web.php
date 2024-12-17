@@ -2,7 +2,9 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RequestController;
+use App\Http\Controllers\AdminController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Middleware\Admin;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,6 +28,11 @@ Route::middleware('auth')->group(function () {
     Route::get('/create', [RequestController::class, 'create'])->name('request.create');
     Route::post('/store', [RequestController::class, 'store'])->name('request.store');
     Route::delete('/requests/{request}', [RequestController::class, 'destroy'])->name('request.destroy');
+});
+
+Route::middleware((Admin::class))->group(function () {
+    Route::get('/admin', [AdminController::class, 'index'])->name('admin.index');
+    Route::patch('update', [RequestController::class, 'update'])->name('request.update');
 });
 
 require __DIR__ . '/auth.php';
