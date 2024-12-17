@@ -7,10 +7,10 @@
   <div class="py-12">
     <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
       <div class='flex justify-between bg-blue-700 text-white font-bold text-xl'>
-        <p class="p-5  w-full max-[450px]:p-2">Дата заявления</p>
+        <p class="p-5  w-full max-[450px]:p-2">Дата заявки</p>
         <p class="p-5  w-full max-[450px]:p-2 max-[800px]:hidden">Номер </p>
         <p class="p-5 w-full max-[450px]:p-2">Имя пользователя</p>
-        <p class="p-5 w-full max-[450px]:p-2 max-[800px]:hidden">Текст заявления</p>
+        <p class="p-5 w-full max-[450px]:p-2 max-[800px]:hidden">Дата</p>
         <p class="p-5 w-full max-[450px]:p-2">Статус</p>
       </div>
       @foreach($requests as $request)
